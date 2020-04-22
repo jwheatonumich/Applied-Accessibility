@@ -1,3 +1,20 @@
+<style>
+
+/*This hides something from view be moving it offscreen and shrinking it to 1 px*/
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    top: auto;
+    overflow: hidden;
+  }
+
+  /*turns image backgrounds yellow when they are focused*/
+  img:focus {
+    background-color: yellow;
+  }
+</style>
 
 <body>
 
@@ -25,15 +42,61 @@
     </article>
 
     <p>
-        The below image is contained in a figure with a figure caption.
+        The below image is contained in a figure with a figure caption. It can be selected using "tab" because it has a tabindex.
     </p>
     <figure>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Blue Robot representing the Godot Logo" width=50px>
+        <!--Tab index of 1 focuses the item first before anything else on the page.-->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Blue Robot representing the Godot Logo" width=50px tabindex="1">
         <br>
         <figcaption>
           A blue robot head representing the Godot logo.
         </figcaption>
     </figure>
+
+    <form>
+        The below input box and label are associated using a for statement. You can also focus the input box by pressing "alt+a" because the field utilizes an access key.
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" accesskey="a">
+    </form>
+
+
+    <form>
+        <fieldset>
+            <legend>This set of radio buttons is contained in a fieldset and the text is in a legend to improve accessibility.</legend>
+            <input id="newbie" type="radio" name="levels" value="newbie">
+            <label for="newbie">1</label><br>
+            <input id="intermediate" type="radio" name="levels" value="intermediate">
+            <label for="intermediate">2</label><br>
+            <input id="master" type="radio" name="levels" value="master">
+            <label for="master">3</label>
+        </fieldset>
+    </form>
+
+    <form>
+        <label for="input1">The below date picker field could default to text input on older browsers, so the date format should be included in the label or as default text.</label>
+        <br>
+        <input type="date" id="input1" name="input1">
+    </form>
+
+    <p>
+        The below text includes a datetime prior to "Last Wednesday" that will only shoe-up to assistive readers.
+        <br>
+        <time datetime="2013-02-13">Last Wednesday</time>
+    </p>
+
+    <p>
+        There is a paragraph below this line that is hidden from view but available to screen readers using CSS.
+    </p>
+
+    <p class="sr-only">
+        Screen readers only.
+    </p>
+
+    <p>
+        Links should go around relevant information rather than just text saying "Click Here" so that <a href="https://www.text2speech.org/">text to speach</a> reading only links will make sense.
+    </p>
+
 </body>
 
 <footer>
